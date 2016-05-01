@@ -1,0 +1,3 @@
+# Game of Life
+
+En perl, aleatorio al inicio...
