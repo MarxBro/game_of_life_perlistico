@@ -13,7 +13,7 @@ my %opts = ();
 getopts('x:y:g:dh',\%opts);
 
 my $grid_x = $opts{x} || 25;
-my $grid_y = $opts{y} || 25;
+my $grid_y = $opts{y} || 100;
 my $row = $grid_y;
 my $generations = $opts{g} || 200;
 my $debug = $opts{d} || 0;
