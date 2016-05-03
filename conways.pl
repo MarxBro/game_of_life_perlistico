@@ -65,7 +65,8 @@ for my $gen (1 .. $generations){
     draw();
     #separador();
     new_gen();
-    sleep 1;
+    #sleep 1;
+    select (undef, undef, undef, 0.25);
 }
 ######################################################################
 # S U B S
