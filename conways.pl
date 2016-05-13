@@ -12,14 +12,14 @@ use Term::ANSIColor;
 my %opts = ();
 getopts('x:y:g:dh',\%opts);
 
-my $grid_x = $opts{x} || 25;
-my $grid_y = $opts{y} || 100;
-my $row = $grid_y;
-my $generations = $opts{g} || 200;
-my $debug = $opts{d} || 0;
-my $clear_screen = `clear`;
-my $vivo = 'green on_green';
-my $muerto = 'black on_black';
+my $grid_x  = $opts{x} || 25;
+my $grid_y  = $opts{y} || 100;
+my $row     = $grid_y;
+my $generations     = $opts{g} || 200;
+my $debug           = $opts{d} || 0;
+my $clear_screen    = `clear`;
+my $vivo    = 'green on_green';
+my $muerto  = 'black on_black';
 
 
 if ($opts{h}){
@@ -37,7 +37,7 @@ Script para Conwaydear como un loco.
 
 =over
 
-=item x [nro] -- Tamao eje X
+=item x [nro] -- Tamaño eje X
 
 =item y [nro] -- Tamaño eje Y
 
@@ -93,29 +93,27 @@ sub new_gen {
         my $suma = 0;
         
         #vecino de la izquierda, misma fila.
-        $suma += $grid{$pos-1} ; #unless (($pos % $row)-1 == 0);
-        $suma += $grid{$pos+1} ; #unless ($pos % $row == 0);
+        $suma += $grid{$pos-1} ; 
+        $suma += $grid{$pos+1} ;
         #vecinos de una fila abajo.
             $suma += $grid{$pos+$row};
-            $suma += $grid{$pos+$row-1}; # unless (($pos % $row)-1 == 0);
-            $suma += $grid{$pos+$row+1}; # unless ($pos % $row == 0);
+            $suma += $grid{$pos+$row-1};
+            $suma += $grid{$pos+$row+1};
         #vecinos de una fila arriba.
             $suma += $grid{$pos-$row};
-            $suma += $grid{$pos-$row-1} ; #unless (($pos % $row)-1 == 0);
-            $suma += $grid{$pos-$row+1} ; #unless ($pos % $row == 0);
+            $suma += $grid{$pos-$row-1} ;
+            $suma += $grid{$pos-$row+1} ;
 
         if ( $grid{$pos} == 0 ) {
             if ( $suma == 3 ) {
                 $grid_new{$pos} = 1;    # Nacio!
-            }
-            else {
+            } else {
                 $grid_new{$pos} = 0;
             }
         } else {
             if ( $suma == 2 || $suma == 3 ) {
                 $grid_new{$pos} = 1;    # Sigue igual!
-            }
-            else {
+            } else {
                 $grid_new{$pos} = 0;    # Murió por soledad o superpoblación.
             }
         }
